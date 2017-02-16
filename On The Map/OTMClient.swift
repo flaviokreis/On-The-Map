@@ -39,7 +39,7 @@ class OTMClient: NSObject {
         
         let _ = taskForParserGETMethod(url) { (results, error) in
             guard error == nil else {
-                completionHandler([], "Error on try get students.")
+                completionHandler([], error?.localizedDescription)
                 return
             }
             
@@ -112,7 +112,7 @@ class OTMClient: NSObject {
         
         let _ = taskForParserPOSTMethod(url, jsonBody: json) { (results, error) in
             guard error == nil else {
-                completionHandler(false, "Error on try add user location.")
+                completionHandler(false, error?.localizedDescription)
                 return
             }
             
@@ -138,7 +138,7 @@ class OTMClient: NSObject {
         
         let _ = taskForParserPUTMethod(url, jsonBody: json) { (results, error) in
             guard error == nil else {
-                completionHandler(false, "Error on try add user location.")
+                completionHandler(false, error?.localizedDescription)
                 return
             }
             
@@ -202,7 +202,7 @@ class OTMClient: NSObject {
         let _ = taskForUdacityPOSTMethod(url, jsonBody: jsonBody) { (results, error) in
             if let error = error {
                 print(error.localizedDescription)
-                completionHandlerForLogin(nil, "Email or password is wrong.")
+                completionHandlerForLogin(nil, error.localizedDescription)
             }
             else{
                 if let account = results?[JSONResponseKeys.account] as? [String:Any], let userKey = account[JSONResponseKeys.key] as? String {
@@ -222,7 +222,7 @@ class OTMClient: NSObject {
         let _ = taskForUdacityGETMethod(url) { (results, error) in
             if let error = error {
                 print(error.localizedDescription)
-                completionHandlerForUserInfo(false, "Error on try get user information.")
+                completionHandlerForUserInfo(false, error.localizedDescription)
             }
             else{
                 if let userInfo = results?[JSONResponseKeys.user] as? [String:Any], let firstName = userInfo[JSONResponseKeys.first_name] as? String, let lastName = userInfo[JSONResponseKeys.last_name] as? String {
@@ -251,7 +251,7 @@ class OTMClient: NSObject {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
+                sendError((error?.localizedDescription)!)
                 return
             }
             

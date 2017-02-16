@@ -13,7 +13,6 @@ class OTMDataSource: NSObject {
     var user: Student? = nil
     var studentLocations = [StudentLocation]()
     var locationObjectId = ""
-    var isSaved = false
     
     class func sharedInstance() -> OTMDataSource {
         struct Singleton {

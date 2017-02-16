@@ -86,8 +86,7 @@ class AddPinUrlViewController: UIViewController, MKMapViewDelegate, UITextFieldD
         OTMClient.sharedInstance().addStudentLocation(studentLocation) { (success, error) in
             DispatchQueue.main.async {
                 if success {
-                    dataSource.isSaved = true
-                    self.dismiss(animated: true, completion: nil)
+                   self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                 }
                 else if let error = error {
                     self.showAlertMessage(error)

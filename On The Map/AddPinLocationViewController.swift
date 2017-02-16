@@ -21,17 +21,6 @@ class AddPinLocationViewController: UIViewController, UITextFieldDelegate {
         locationTextField.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let dataSource = OTMDataSource.sharedInstance()
-        
-        if dataSource.isSaved {
-            dataSource.isSaved = false
-            self.dismiss(animated: false)
-        }
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }

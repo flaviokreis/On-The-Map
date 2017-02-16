@@ -13,6 +13,7 @@ class AddPinUrlViewController: UIViewController, MKMapViewDelegate, UITextFieldD
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mediaUrlTextField: UITextField!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var location = ""
     var coordinate: CLLocationCoordinate2D?
@@ -34,9 +35,23 @@ class AddPinUrlViewController: UIViewController, MKMapViewDelegate, UITextFieldD
     
     func addLocationByAddress(){
         print("Location: \(location)")
+        
+        loadingIndicator.isHidden = false
+        loadingIndicator.startAnimating()
+        mapView.isHidden = true
+        
         if location != "" {
             let geocoder:CLGeocoder = CLGeocoder();
             geocoder.geocodeAddressString(location) { (placemarks, error) in
+                guard error == nil else {
+                    self.showAlertMessage("Error on try get the location.")
+                    return
+                }
+                
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.mapView.isHidden = false
+                
                 if let placemarks = placemarks, placemarks.count > 0 {
                     let topResult:CLPlacemark = placemarks[0];
                     let placemark: MKPlacemark = MKPlacemark(placemark: topResult);
@@ -83,7 +98,7 @@ class AddPinUrlViewController: UIViewController, MKMapViewDelegate, UITextFieldD
         
         let studentLocation = StudentLocation(student: dataSource.user!, location: locationModel, objectID: dataSource.locationObjectId)
         
-        OTMClient.sharedInstance().addStudentLocation(studentLocation) { (success, error) in
+        OTMClient.sharedInstance().addOrUpdateStudentLocation(studentLocation) { (success, error) in
             DispatchQueue.main.async {
                 if success {
                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -96,7 +111,7 @@ class AddPinUrlViewController: UIViewController, MKMapViewDelegate, UITextFieldD
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
-        self.dismiss(animated: true)
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

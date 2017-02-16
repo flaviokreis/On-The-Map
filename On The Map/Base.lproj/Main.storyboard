@@ -442,6 +442,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jFH-2a-raE">
                                 <rect key="frame" x="0.0" y="120" width="375" height="483"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UnC-1C-muM">
+                                <rect key="frame" x="177" y="291.5" width="20" height="20"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iib-1Q-iHs">
                                 <rect key="frame" x="114.5" y="503" width="145" height="55"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -465,8 +468,10 @@
                             <constraint firstAttribute="trailing" secondItem="jFH-2a-raE" secondAttribute="trailing" id="Kvh-OB-4wm"/>
                             <constraint firstItem="qxb-VR-9T7" firstAttribute="top" secondItem="Iib-1Q-iHs" secondAttribute="bottom" constant="45" id="LQG-VQ-hLe"/>
                             <constraint firstAttribute="trailing" secondItem="vVF-sK-1hp" secondAttribute="trailing" id="Mf4-Qb-XQK"/>
+                            <constraint firstItem="UnC-1C-muM" firstAttribute="centerY" secondItem="fLN-0P-Xxr" secondAttribute="centerY" id="U7A-Ow-oul"/>
                             <constraint firstItem="jFH-2a-raE" firstAttribute="top" secondItem="vVF-sK-1hp" secondAttribute="bottom" id="b6x-5I-YNk"/>
                             <constraint firstItem="Iib-1Q-iHs" firstAttribute="centerX" secondItem="fLN-0P-Xxr" secondAttribute="centerX" id="qC0-TC-IEY"/>
+                            <constraint firstItem="UnC-1C-muM" firstAttribute="centerX" secondItem="fLN-0P-Xxr" secondAttribute="centerX" id="z7s-cZ-VuO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="viL-b2-1bb">
@@ -478,6 +483,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loadingIndicator" destination="UnC-1C-muM" id="BXq-1j-vhy"/>
                         <outlet property="mapView" destination="jFH-2a-raE" id="DyY-d1-Xmh"/>
                         <outlet property="mediaUrlTextField" destination="bmt-am-lZq" id="5Y6-bY-0rO"/>
                     </connections>

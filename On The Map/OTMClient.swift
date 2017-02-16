@@ -93,7 +93,7 @@ class OTMClient: NSObject {
         }
     }
     
-    func addStudentLocation(_ studentLocation: StudentLocation, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void){
+    func addOrUpdateStudentLocation(_ studentLocation: StudentLocation, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void){
         if studentLocation.objectID != "" {
             updateLocation(studentLocation, completionHandler: completionHandler)
         }
@@ -148,7 +148,6 @@ class OTMClient: NSObject {
             }
             
             if let updatedAt = results[JSONResponseKeys.updatedAt] as? String {
-                print("Updated at: \(updatedAt)")
                 completionHandler(true, nil)
             }
         }
@@ -257,7 +256,6 @@ class OTMClient: NSObject {
             }
             
             /* GUARD: Did we get a successful 2XX response? */
-            print("status code: \((response as? HTTPURLResponse)?.statusCode)")
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 sendError("Your request returned a status code other than 2xx!")
                 return

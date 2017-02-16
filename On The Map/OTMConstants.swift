@@ -57,6 +57,8 @@ extension OTMClient {
         static let username = "username"
         static let password = "password"
         static let limit = "limit"
+        static let order = "order"
+        static let udpatedAt = "updatedAt"
         static let where_ = "where"
         static let uniqueKey = "uniqueKey"
         static let firstName = "firstName"

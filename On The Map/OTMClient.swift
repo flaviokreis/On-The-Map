@@ -29,7 +29,8 @@ class OTMClient: NSObject {
         }
         
         let parameters: [String:AnyObject] = [
-            RequestParams.limit : 100 as AnyObject
+            RequestParams.limit : 100 as AnyObject,
+            RequestParams.order : "-\(RequestParams.udpatedAt)" as AnyObject
         ]
         
         let url = urlFromParameters(host: Parser.Host, parameters: parameters, withPath: Parser.StudentLocationPath)
@@ -52,7 +53,6 @@ class OTMClient: NSObject {
                 dataSource.studentLocations.removeAll()
                 
                 for value in students {
-                    print(value)
                     let student = StudentLocation(dictionary: value)
                     dataSource.studentLocations.append(student)
                 }

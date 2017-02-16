@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPinLocationViewController: UIViewController {
+class AddPinLocationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var locationTextField: UITextField!
     
@@ -17,6 +17,8 @@ class AddPinLocationViewController: UIViewController {
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        locationTextField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,8 +32,17 @@ class AddPinLocationViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @IBAction func cancelPressed(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     // MARK: - Navigation

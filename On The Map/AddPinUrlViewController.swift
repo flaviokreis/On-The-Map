@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class AddPinUrlViewController: UIViewController, MKMapViewDelegate {
+class AddPinUrlViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mediaUrlTextField: UITextField!
@@ -23,7 +23,13 @@ class AddPinUrlViewController: UIViewController, MKMapViewDelegate {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
+        mediaUrlTextField.delegate = self
+        
         addLocationByAddress()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     func addLocationByAddress(){
@@ -92,6 +98,11 @@ class AddPinUrlViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func cancelPressed(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func showAlertMessage(_ message: String){

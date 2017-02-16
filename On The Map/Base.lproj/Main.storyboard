@@ -329,7 +329,7 @@
                                                 <rect key="frame" x="16" y="48" width="343" height="28"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -415,7 +415,7 @@
                                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcZ-pH-xLq">
                                         <rect key="frame" x="0.0" y="60" width="375" height="30"/>
@@ -443,12 +443,13 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="483"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iib-1Q-iHs">
-                                <rect key="frame" x="142.5" y="543" width="90" height="40"/>
+                                <rect key="frame" x="114.5" y="503" width="145" height="55"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="PP2-tb-G7g"/>
-                                    <constraint firstAttribute="width" constant="90" id="k4U-ca-tKX"/>
+                                    <constraint firstAttribute="width" constant="145" id="h4i-Gw-3OW"/>
+                                    <constraint firstAttribute="height" constant="55" id="n6x-xP-iKz"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitPressed:" destination="zuZ-YN-ptu" eventType="touchUpInside" id="61X-Mb-wUw"/>
@@ -459,13 +460,13 @@
                         <constraints>
                             <constraint firstItem="jFH-2a-raE" firstAttribute="leading" secondItem="fLN-0P-Xxr" secondAttribute="leading" id="07Y-UW-FsK"/>
                             <constraint firstItem="vVF-sK-1hp" firstAttribute="leading" secondItem="fLN-0P-Xxr" secondAttribute="leading" id="73w-ig-axc"/>
-                            <constraint firstItem="Iib-1Q-iHs" firstAttribute="centerX" secondItem="fLN-0P-Xxr" secondAttribute="centerX" id="DhK-7X-IHH"/>
                             <constraint firstItem="vVF-sK-1hp" firstAttribute="top" secondItem="A59-Im-xGZ" secondAttribute="bottom" id="F0b-9c-CAn"/>
-                            <constraint firstItem="qxb-VR-9T7" firstAttribute="top" secondItem="Iib-1Q-iHs" secondAttribute="bottom" constant="20" id="IMY-DB-QFY"/>
                             <constraint firstItem="qxb-VR-9T7" firstAttribute="top" secondItem="jFH-2a-raE" secondAttribute="bottom" id="KSE-6e-HfD"/>
                             <constraint firstAttribute="trailing" secondItem="jFH-2a-raE" secondAttribute="trailing" id="Kvh-OB-4wm"/>
+                            <constraint firstItem="qxb-VR-9T7" firstAttribute="top" secondItem="Iib-1Q-iHs" secondAttribute="bottom" constant="45" id="LQG-VQ-hLe"/>
                             <constraint firstAttribute="trailing" secondItem="vVF-sK-1hp" secondAttribute="trailing" id="Mf4-Qb-XQK"/>
                             <constraint firstItem="jFH-2a-raE" firstAttribute="top" secondItem="vVF-sK-1hp" secondAttribute="bottom" id="b6x-5I-YNk"/>
+                            <constraint firstItem="Iib-1Q-iHs" firstAttribute="centerX" secondItem="fLN-0P-Xxr" secondAttribute="centerX" id="qC0-TC-IEY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="viL-b2-1bb">

@@ -174,6 +174,27 @@ class OTMClient: NSObject {
         
     }
     
+    func logout(completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void){
+        
+        let url = urlFrom(host: OTMClient.Udacity.Host, withPath: OTMClient.Udacity.SessionPath)
+        
+        let request = NSMutableURLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        let _ = taskForMethod(request, isUdacity: true) { (results, error) in
+            completionHandler(true, nil)
+        }
+    }
+    
     private func loginUdacity(email: String, password: String, completionHandlerForLogin: @escaping (_ userKey: String?, _ errorString: String?) -> Void){
         
         let url = urlFrom(host: OTMClient.Udacity.Host, withPath: OTMClient.Udacity.SessionPath)

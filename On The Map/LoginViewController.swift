@@ -50,6 +50,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     private func completeLogin() {
         let controller = storyboard!.instantiateViewController(withIdentifier: "TabBarNavigationController") as! UITabBarController
         present(controller, animated: true, completion: nil)
+        
+        setUIEnabled(true)
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
     
     func setUIEnabled(_ enabled: Bool) {

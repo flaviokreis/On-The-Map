@@ -102,6 +102,14 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    @IBAction func logoutPressed(_ sender: Any) {
+        OTMClient.sharedInstance().logout { (success, error) in
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "goToAddPinSegue" {
             if OTMDataSource.sharedInstance().locationObjectId != "" {

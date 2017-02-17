@@ -43,14 +43,14 @@ class AddPinUrlViewController: UIViewController, MKMapViewDelegate, UITextFieldD
         if location != "" {
             let geocoder:CLGeocoder = CLGeocoder();
             geocoder.geocodeAddressString(location) { (placemarks, error) in
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.mapView.isHidden = false
+                
                 guard error == nil else {
                     self.showAlertMessage("Error on try get the location.")
                     return
                 }
-                
-                self.loadingIndicator.stopAnimating()
-                self.loadingIndicator.isHidden = true
-                self.mapView.isHidden = false
                 
                 if let placemarks = placemarks, placemarks.count > 0 {
                     let topResult:CLPlacemark = placemarks[0];
